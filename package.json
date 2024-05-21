@@ -18,5 +18,11 @@
 		"svelte": "^4.2.7",
 		"vite": "^5.0.3"
 	},
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"@threlte/core": "^7.3.0",
+		"@threlte/extras": "^8.11.2",
+		"svelte-cubed": "^0.2.1",
+		"three": "^0.164.1"
+	}
 }

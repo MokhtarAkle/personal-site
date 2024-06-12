@@ -25,7 +25,7 @@
   <OrbitControls />
 </T.PerspectiveCamera>
 
-<T.AmbientLight intensity={0.4} />
+<T.AmbientLight intensity={1} />
 <T.DirectionalLight position={[1, 2, 5]} />
 
 <Box on:click={setRandomPos} position.x={$pos.x} position.z={$pos.z} />

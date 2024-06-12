@@ -10,7 +10,25 @@
       extend({
     OrbitControls
   })
-    })
+
+    const username = 'MokhtarAkle';
+		const apiUrl = `https://api.github.com/users/${username}/repos?sort=updated&per_page=50`;
+
+		fetch(apiUrl)
+			.then((response) => response.json())
+			.then((repos) => {
+				repos = repos.map((repo) => {
+					return {
+						...repo,
+						name: repo.name.replace(/-/g, ' ')
+					};
+				});
+
+
+				console.log(repos)
+				});
+			})
+
 
 
   </script>

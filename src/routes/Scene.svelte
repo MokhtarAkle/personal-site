@@ -28,7 +28,7 @@
 <T.AmbientLight intensity={1} />
 <T.DirectionalLight position={[1, 2, 5]} />
 
-<Box on:click={setRandomPos} position.x={$pos.x} position.z={$pos.z} />
+<Box position.x={$pos.x} position.z={$pos.z} />
 <Grid
 	position.y={-0.001}
 	cellColor="#ffffff"

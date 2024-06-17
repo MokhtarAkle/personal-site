@@ -1,8 +1,7 @@
 <script>
 	import { forwardEventHandlers, T } from '@threlte/core';
-	import { useCursor } from '@threlte/extras';
+	import { Text3DGeometry, Align } from '@threlte/extras';
 	import { spring } from 'svelte/motion';
-    import { useTexture } from '@threlte/extras';
 	import image from '$assets/image.png';
 	import image1 from '$assets/image1.png';
   import image2 from '$assets/image2.png';
@@ -23,21 +22,39 @@
     const texture3 = useLoader(TextureLoader).load(image3)
     const texture4 = useLoader(TextureLoader).load(image4)
     const texture5 = useLoader(TextureLoader).load(image5)
-	const scale = spring(1);
-	const component = forwardEventHandlers();
+	  const scale = spring(1);
+    const scale1 = spring(1);
+	  const component = forwardEventHandlers();
+    let value = ''
+    let value1 = ''
 
+
+  export let data;
+  console.log(data.body);
+	value = data.body[1].name;
+  value1 = data.body[4].name;
 </script>
 
 <T.Group
-  scale={$scale}
   {...$$restProps}
   bind:this={$component}
 >
+<T.Mesh 
+position={[-0.75, 2, -3]}
+rotation={[0, 0, 0]}
+>
+  <Text3DGeometry text={value1} size={0.1} depth={0.04}  />
 
+  <T.MeshStandardMaterial
+    color="#1E1E1E"
+  />
+</T.Mesh>
 <T.Mesh
 position.y={1}
 position.x={0}
 position.z={-3}
+scale={$scale}
+
 on:click={() => {
   $scale = 2 
 }} 
@@ -73,17 +90,33 @@ castShadow
   else parent.material = [self]
 }} />
 {/if}
+
+</T.Mesh>
+
+
+<T.Mesh 
+position={[3.3, 2, 0.9]}
+rotation={[0, -2, 0]}
+>
+  <Text3DGeometry text={value} size={0.1} depth={0.04}  />
+
+  <T.MeshStandardMaterial 
+    color="#351EB6"
+  />
 </T.Mesh>
 <T.Mesh
+scale={$scale1}
+
 position.y={1}
 position.x={3}
 position.z={1.5}
+rotation={[0, -2, 0]}
 
     on:click={() => {
-      $scale = 2 
+      $scale1 = 2 
     }} 
     on:dblclick={() => {
-      $scale = 1
+      $scale1 = 1
     }}
 castShadow
 >

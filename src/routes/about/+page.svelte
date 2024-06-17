@@ -6,7 +6,7 @@
 
 	onMount(() => {
 		const username = 'MokhtarAkle';
-		const apiUrl = `https://api.github.com/users/${username}/repos?sort=updated&per_page=50`;
+		const apiUrl = `https://api.github.com/users/MokhtarAkle/repos?sort=updated&per_page=50`;
 
 		fetch(apiUrl)
 			.then((response) => response.json())

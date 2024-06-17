@@ -22,6 +22,7 @@
 	"dependencies": {
 		"@threlte/core": "^7.3.0",
 		"@threlte/extras": "^8.11.2",
+		"node-fetch": "^3.3.2",
 		"svelte-cubed": "^0.2.1",
 		"three": "^0.164.1"
 	}

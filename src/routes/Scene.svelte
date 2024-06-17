@@ -1,8 +1,10 @@
 <script>
 	import { T, useTask } from '@threlte/core';
-	import { Grid, OrbitControls, interactivity } from '@threlte/extras';
+	import { Grid, OrbitControls, interactivity, Environment } from '@threlte/extras';
 	import { spring } from 'svelte/motion';
 	import Box from './Box.svelte';
+	import { OrthographicCamera } from 'svelte-cubed';
+
 
 	const { target } = interactivity();
 	target.set(document.getElementById('int-target') ?? undefined);
@@ -13,22 +15,37 @@
 			z: Math.random() * 10 - 5
 		});
 	};
+
+	export let data;
+
 </script>
 
 <T.PerspectiveCamera
   makeDefault
-  position={[10, 10, 10]}
+  position={[5, 4, 1]}
   on:create={({ ref }) => {
     ref.lookAt(0, 0, 0)
   }}
 >
   <OrbitControls />
 </T.PerspectiveCamera>
+<!-- 
+<T.OrthographicCamera
+  makeDefault
+  on:create={({ ref }) => {
+    ref.lookAt(0, 0, 0)
+  }}
+>
+  <OrbitControls />
+</T.OrthographicCamera> -->
+
+<Environment path="/src/lib/assets/" files="bg.jpg" isBackground={true} groundProjection={{ radius: 200, height: 5, scale: { x: 100, y: 100, z: 100 } }}/>
 
 <T.AmbientLight intensity={1} />
 <T.DirectionalLight position={[1, 2, 5]} />
 
-<Box position.x={$pos.x} position.z={$pos.z} />
+
+<Box position.x={$pos.x} position.z={$pos.z} {data}/>
 <Grid
 	position.y={-0.001}
 	cellColor="#ffffff"
